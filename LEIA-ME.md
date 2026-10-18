@@ -1,8 +1,10 @@
 # Aconchego para Android
 
-## Situação desta entrega
+## Projeto e instalador
 
-Este é o projeto-fonte para gerar o APK. **Não contém um APK compilado.** A interface web foi compilada e os tipos TypeScript foram verificados. A camada Android ainda precisa ser compilada e testada em um aparelho ou emulador; o ambiente de criação não possui Android SDK e bloqueia o download dessas ferramentas.
+Este repositório contém o código-fonte do aplicativo Android. O workflow Gerar APK do Aconchego compila o aplicativo, executa o Android Lint e verifica a assinatura. Quando a execução termina com sucesso, o instalador está no artefato Aconchego-APK daquela execução.
+
+A interface web passou pela verificação de tipos TypeScript e compilação Vite; PDFs curtos e longos foram renderizados para conferência. A instalação e os fluxos completos em aparelho ainda não foram verificados.
 
 ## O que foi implementado
 
@@ -17,9 +19,9 @@ Esta versão é independente do site Aconchego: **não sincroniza com a conta ne
 
 ## Gerar pelo GitHub Actions
 
-1. Coloque o conteúdo desta pasta na raiz de um repositório, de preferência privado.
-2. Abra Actions > Gerar APK do Aconchego > Run workflow.
-3. Quando o trabalho terminar, baixe o artefato Aconchego-APK, extraia o ZIP e instale app-debug.apk.
+1. O workflow é executado em pull requests para main. Também pode ser iniciado manualmente quando estiver na branch padrão.
+2. Abra Actions > Gerar APK do Aconchego e selecione uma execução concluída com sucesso.
+3. Baixe o artefato Aconchego-APK, extraia o ZIP e abra app-debug.apk no Android.
 
 O workflow usa JDK 17, Gradle 8.9, Android Gradle Plugin 8.7.3 e SDK 35. O APK de teste é assinado com chave de depuração; não é uma distribuição da Play Store. A chave é mantida no cache do repositório quando disponível. Se o cache se perder, a assinatura pode mudar e impedir atualizar uma instalação anterior. Antes de uma distribuição permanente, configure uma chave de assinatura durável e privada.
 
@@ -35,9 +37,8 @@ Saída esperada:
 
 Não é necessário Node para compilar o APK: os recursos web já estão incluídos em app/src/main/assets/web. Para alterar a interface, o código está em web-source. Com Node 22 ou superior, instale as dependências ali e execute npm run build.
 
-## Validação ainda necessária
+## Validação em aparelho ainda necessária
 
-- Compilação Java e lint Android.
 - Instalação e abertura no Android 13 ou superior.
 - Criar, editar, concluir, reiniciar o aplicativo e confirmar persistência.
 - PDF curto/longo, destino local e cancelamento da exportação.
