@@ -34,3 +34,9 @@ A autenticação com um sensor biométrico real ainda exige verificação em apa
 ## Versão 1.2 — Observar e acolher
 
 Prática opcional em quatro convites: perceber pensamentos, dar espaço às emoções, ampliar a atenção ao ambiente e escolher uma pequena ação. Acesso em Meu espaço. A etapa final do RPD inclui três campos opcionais de reflexão, com salvamento de rascunhos, backup e exportação PDF. Textos adaptados em palavras próprias do trecho fornecido pelo usuário, sem promessas de alívio. Mesmo aplicativo e chave da edição Livro 1.1; instalação como atualização.
+
+## Versão 1.3 — Pequenos passos
+
+Amplia as ideias dos trechos de Robert L. Leahy fornecidos pelo usuário: acolher a ansiedade sem exigir relaxamento, aproximar-se gradualmente de atividades cotidianas seguras e registrar o que se aprende. Nova seção com exemplos interativos e plano opcional no RPD (situação evitada, significado, previsão, pequeno passo, resultado e aprendizado). Campos preservados em rascunhos, backup, PDF e resumo semanal revisável. Exercícios de indução de sintomas são apresentados apenas como tema para planejar na terapia.
+
+Referência complementar consultada para a abordagem gradual: NHS, Facing your fears, https://www.nhs.uk/every-mind-matters/mental-wellbeing-tips/self-help-cbt-techniques/facing-your-fears/ (consulta em 18/10/2026). Não reproduzimos seu protocolo de redução obrigatória da intensidade; o app registra a experiência sem metas automáticas de sintomas.

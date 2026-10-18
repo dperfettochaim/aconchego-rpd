@@ -24,7 +24,7 @@ final class JournalStore {
   if(!Arrays.asList("open","done").contains(r.getString("status"))||r.getString("title").length()>160)throw new IOException("Registro inválido.");
   for(String key:new String[]{"situation","body","emotion","thought","consequence","evidenceFor","evidenceAgainst","alternatives","friend","response","next","notes"})if(r.getString(key).length()>12000)throw new IOException("Campo muito longo.");
   for(String key:new String[]{"before","after"})if(!r.isNull(key)&&(r.getDouble(key)<0||r.getDouble(key)>100))throw new IOException("Intensidade inválida.");
-  for(String key:new String[]{"controlAttempt","observing","allowing"})if(r.has(key)&&(!(r.get(key) instanceof String)||r.getString(key).length()>12000))throw new IOException("Campo de reflexão inválido.");
+  for(String key:new String[]{"controlAttempt","observing","allowing","avoidedSituation","whyMatters","expectedOutcome","chosenStep","actualOutcome","learning"})if(r.has(key)&&(!(r.get(key) instanceof String)||r.getString(key).length()>12000))throw new IOException("Campo de reflexão inválido.");
   r.getLong("updatedAt");if(r.has("favorite"))r.getBoolean("favorite");
  }
  private static void validateDraft(JSONObject d)throws Exception{validateRecord(d.getJSONObject("record"));if(d.getInt("step")<0||d.getInt("step")>3)throw new IOException("Etapa inválida.");d.getBoolean("quick");d.getLong("savedAt");}

@@ -40,6 +40,7 @@ jobs:
           script: |
             gradle --no-daemon connectedDebugAndroidTest
             mkdir -p qa
+            adb pull /data/local/tmp/smallsteps-v4.png qa/smallsteps.png || true
             adb pull /data/local/tmp/practice-v3.png qa/practice.png || true
             adb pull /data/local/tmp/home-v2.png qa/home.png || true
             adb pull /data/local/tmp/settings-dark-v2.png qa/settings.png || true

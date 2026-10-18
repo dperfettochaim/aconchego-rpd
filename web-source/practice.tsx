@@ -8,7 +8,7 @@ const moments=[
  {title:'Escolher um pequeno passo.',label:'Escolher uma ação',text:'Qual ação possível combina com o que importa para você agora? Pode ser retomar uma tarefa, conversar com alguém, descansar ou pedir apoio.',prompt:'“Mesmo com este desconforto, posso…”',note:'Pense na onda como uma metáfora de atravessar uma experiência sem precisar dominá-la. Não há obrigação de se sentir melhor para encerrar.'},
 ];
 
-export function Practice({onRecord,onBack}:{onRecord:()=>void;onBack:()=>void}){
+export function Practice({onRecord,onBack,onPlan}:{onRecord:()=>void;onBack:()=>void;onPlan:()=>void}){
  const [step,setStep]=useState(0);const heading=useRef<HTMLHeadingElement>(null);const mounted=useRef(false);
  useEffect(()=>{if(mounted.current)heading.current?.focus();mounted.current=true;},[step]);
  const moment=moments[step];
@@ -22,6 +22,6 @@ export function Practice({onRecord,onBack}:{onRecord:()=>void;onBack:()=>void}){
    <div className="practice-actions">{step>0&&<button className="button secondary" onClick={()=>setStep(step-1)}><ArrowLeft size={16}/> Anterior</button>}{step<3?<button className="button primary" onClick={()=>setStep(step+1)}>Próximo convite <ArrowRight size={16}/></button>:<button className="button primary" onClick={onRecord}><BookOpen size={18}/> Registrar minha experiência</button>}</div>
   </article>
   <p className="practice-permission">Todos os passos são opcionais. Você pode pular, parar ou voltar ao seu dia quando quiser.</p>
-  <div className="practice-footer"><p>Acolher uma emoção não significa abrir mão de agir ou de buscar cuidado quando necessário.</p><button className="text-btn" onClick={onRecord}>Anotar no meu RPD <ArrowRight size={16}/></button><small>Adaptação em palavras próprias das ideias do trecho que você compartilhou.</small></div>
+  <div className="practice-next"><h2>Levar essa atitude para o dia.</h2><p>Você também pode escolher uma pequena ação, mesmo com alguma ansiedade.</p><button className="button secondary" onClick={onPlan}>Explorar Pequenos passos <ArrowRight size={16}/></button></div><div className="practice-footer"><p>Acolher uma emoção não significa abrir mão de agir ou de buscar cuidado quando necessário.</p><button className="text-btn" onClick={onRecord}>Anotar no meu RPD <ArrowRight size={16}/></button><small>Adaptação em palavras próprias das ideias do trecho que você compartilhou.</small></div>
  </section>;
 }
