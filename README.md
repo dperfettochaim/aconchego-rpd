@@ -11,7 +11,7 @@ Um espaço pessoal para registrar pensamentos, salvar RPDs e exportar PDFs. Func
 - Bloqueio opcional pela autenticação do Android (biometria ou credencial do aparelho).
 - Resumo de um período de sete dias com seleção de registros, texto revisável e PDF opcionalmente acompanhado dos RPDs.
 
-A versão 1.1 migra os registros da 1.0 para um arquivo atômico com rascunhos e preferências. A assinatura do APK é comparada com a da primeira versão no workflow para permitir atualização sem desinstalação.
+A versão 1.1 migra os registros da 1.0 para um arquivo atômico com rascunhos e preferências. A chave da primeira compilação não foi persistida pelo ambiente remoto. Esta edição usa o identificador br.com.aconchego.rpd.v2 e instala como Aconchego Livro, preservando o app anterior separado. Registros do app anterior não são importados automaticamente. O workflow gera um APK release sem assinatura, assinado localmente por uma chave privada persistida para futuras atualizações.
 
 ## Compilação e verificação
 

@@ -23,16 +23,10 @@ jobs:
           gradle-version: '8.9'
       - name: SDK Android
         run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
-      - uses: actions/cache@v4
-        with:
-          path: ~/.android/debug.keystore
-          key: aconchego-personal-debug-keystore-v1
       - name: Compilar e verificar
         run: |
-          gradle --no-daemon assembleDebug assembleDebugAndroidTest lintDebug
+          gradle --no-daemon assembleDebug assembleRelease assembleDebugAndroidTest lintDebug
           cat app/build/intermediates/lint_intermediate_text_report/debug/lintReportDebug/lint-results-debug.txt
-          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose --print-certs app/build/outputs/apk/debug/app-debug.apk
-          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk | grep -F "c83a39aba604b86650776a1d20611f308162c38b17b8783e4679bace94c2cf91"
       - name: Permissão de aceleração do emulador
         run: sudo chmod 666 /dev/kvm
       - name: Testar no Android 15
@@ -46,9 +40,9 @@ jobs:
           script: |
             gradle --no-daemon connectedDebugAndroidTest
             mkdir -p qa
-            adb exec-out run-as br.com.aconchego.rpd cat files/home-v2.png > qa/home.png
-            adb exec-out run-as br.com.aconchego.rpd cat files/settings-dark-v2.png > qa/settings.png
-            adb exec-out run-as br.com.aconchego.rpd cat files/favorites-v2.png > qa/favorites.png
+            adb exec-out run-as br.com.aconchego.rpd.v2 cat files/home-v2.png > qa/home.png
+            adb exec-out run-as br.com.aconchego.rpd.v2 cat files/settings-dark-v2.png > qa/settings.png
+            adb exec-out run-as br.com.aconchego.rpd.v2 cat files/favorites-v2.png > qa/favorites.png
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -58,10 +52,14 @@ jobs:
             app/build/reports/androidTests
             app/build/reports/lint-results-debug.html
           retention-days: 7
+      - name: Preparar APK para assinatura local
+        run: cp "$ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" apksigner.jar
       - uses: actions/upload-artifact@v4
         with:
           name: Aconchego-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: |
+            app/build/outputs/apk/release/app-release-unsigned.apk
+            apksigner.jar
           if-no-files-found: error
           retention-days: 7
 
