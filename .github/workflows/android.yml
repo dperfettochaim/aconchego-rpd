@@ -28,7 +28,10 @@ jobs:
           path: ~/.android/debug.keystore
           key: aconchego-personal-debug-keystore-v1
       - name: Compilar e verificar
-        run: gradle --no-daemon assembleDebug lintDebug
+        run: |
+          gradle --no-daemon assembleDebug lintDebug
+          cat app/build/intermediates/lint_intermediate_text_report/debug/lintReportDebug/lint-results-debug.txt
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose app/build/outputs/apk/debug/app-debug.apk
       - uses: actions/upload-artifact@v4
         with:
           name: Aconchego-APK
