@@ -1,5 +1,5 @@
 (function(global){
-const labels={situation:'Situação',body:'Sensações corporais',emotion:'Emoção',thought:'Pensamento automático',consequence:'Consequência',evidenceFor:'Evidências a favor',evidenceAgainst:'Evidências contra',alternatives:'Outras explicações possíveis',friend:'O que eu diria a uma pessoa querida',response:'Resposta alternativa e realista',next:'Próximo passo possível',notes:'Pontos em aberto'};
+const labels={situation:'Situação',body:'Sensações corporais',emotion:'Emoção',thought:'Pensamento automático',consequence:'Consequência',evidenceFor:'Evidências a favor',evidenceAgainst:'Evidências contra',alternatives:'Outras explicações possíveis',friend:'O que eu diria a uma pessoa querida',response:'Resposta alternativa e realista',next:'Próximo passo possível',controlAttempt:'O que tentei afastar ou controlar',observing:'O que observei com distância',allowing:'Como foi dar espaço à experiência',notes:'Pontos em aberto'};
 async function generate(records,report){
  const {PDFDocument,StandardFonts,rgb}=global.PDFLib;const pdf=await PDFDocument.create();pdf.setTitle('Meus registros de pensamentos');pdf.setAuthor('Registro pessoal');pdf.setLanguage('pt-BR');
  const regular=await pdf.embedFont(StandardFonts.TimesRoman),bold=await pdf.embedFont(StandardFonts.TimesRomanBold);

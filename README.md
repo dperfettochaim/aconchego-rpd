@@ -24,3 +24,7 @@ O workflow inclui testes de migração, persistência de rascunhos, mesclagem de
 Desinstalar ou limpar os dados do aplicativo apaga os registros locais. Antes disso, exporte um backup JSON. PDFs preservam o texto para leitura, mas não restauram os registros no app. O backup é um arquivo sem senha e deve ser guardado em um lugar privado. O bloqueio do app não altera esse arquivo exportado.
 
 A versão Android é independente do site e não sincroniza registros. Nenhum registro pessoal real está incluído no código.
+
+## Versão 1.2 — Observar e acolher
+
+Prática opcional em quatro convites: perceber pensamentos, dar espaço às emoções, ampliar a atenção ao ambiente e escolher uma pequena ação. Acesso em Meu espaço. A etapa final do RPD inclui três campos opcionais de reflexão, com salvamento de rascunhos, backup e exportação PDF. Textos adaptados em palavras próprias do trecho fornecido pelo usuário, sem promessas de alívio. Mesmo aplicativo e chave da edição Livro 1.1; instalação como atualização.

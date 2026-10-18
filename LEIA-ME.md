@@ -30,3 +30,7 @@ JDK 17, Gradle 8.9, SDK Android 35. `gradle assembleRelease lintDebug` produz um
 O workflow compila e testa no emulador Android 15. Seu artefato contém o APK release sem assinatura e o apksigner. O APK precisa ser assinado localmente com a chave privada antes da distribuição. A chave e sua senha não estão neste repositório.
 
 A autenticação com um sensor biométrico real ainda exige verificação em aparelho físico.
+
+## Versão 1.2 — Observar e acolher
+
+Prática opcional em quatro convites: perceber pensamentos, dar espaço às emoções, ampliar a atenção ao ambiente e escolher uma pequena ação. Acesso em Meu espaço. A etapa final do RPD inclui três campos opcionais de reflexão, com salvamento de rascunhos, backup e exportação PDF. Textos adaptados em palavras próprias do trecho fornecido pelo usuário, sem promessas de alívio. Mesmo aplicativo e chave da edição Livro 1.1; instalação como atualização.
