@@ -40,9 +40,9 @@ jobs:
           script: |
             gradle --no-daemon connectedDebugAndroidTest
             mkdir -p qa
-            adb pull /data/local/tmp/home-v2.png qa/home.png
-            adb pull /data/local/tmp/settings-dark-v2.png qa/settings.png
-            adb pull /data/local/tmp/favorites-v2.png qa/favorites.png
+            adb pull /data/local/tmp/home-v2.png qa/home.png || true
+            adb pull /data/local/tmp/settings-dark-v2.png qa/settings.png || true
+            adb pull /data/local/tmp/favorites-v2.png qa/favorites.png || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:
