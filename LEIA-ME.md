@@ -1,48 +1,32 @@
-# Aconchego para Android
+# Aconchego Livro 1.1
 
-## Projeto e instalador
+Aplicativo Android offline para registros de pensamentos, com fonte serifada incluída, rascunhos automáticos, registro rápido, favoritos, resumo semanal revisável em PDF, backup/restauração e bloqueio opcional pela autenticação do Android.
 
-Este repositório contém o código-fonte do aplicativo Android. O workflow Gerar APK do Aconchego compila o aplicativo, executa o Android Lint e verifica a assinatura. Quando a execução termina com sucesso, o instalador está no artefato Aconchego-APK daquela execução.
+## Instalação
 
-A interface web passou pela verificação de tipos TypeScript e compilação Vite; PDFs curtos e longos foram renderizados para conferência. A instalação e os fluxos completos em aparelho ainda não foram verificados.
+Use o APK assinado entregue na conversa. Esta edição usa o identificador br.com.aconchego.rpd.v2 e instala separadamente da primeira versão. O app anterior e seus dados continuam no aparelho, mas os registros não são transferidos automaticamente.
 
-## O que foi implementado
+A chave de depuração original não foi preservada pela primeira compilação remota. A nova edição utiliza uma chave privada permanente, guardada separadamente do código, para permitir futuras atualizações sem desinstalação.
 
-- Visual em vermelho, laranja e creme, navegação inferior e transições suaves.
-- RPD em quatro etapas, registros em aberto/concluídos, edição, busca e filtros.
-- Dados gravados no armazenamento privado do aplicativo com gravação atômica.
-- Funcionamento offline, sem login e sem permissão de internet.
-- Exportação PDF individual ou de vários registros pelo seletor de arquivos do Android.
-- Confirmação tátil ao salvar e navegação pelo botão Voltar.
+## Onde encontrar
 
-Esta versão é independente do site Aconchego: **não sincroniza com a conta nem importa automaticamente registros do site**. A desinstalação ou limpeza dos dados do app apaga os registros locais. Exporte os PDFs que quiser guardar. O PDF preserva o conteúdo, mas não permite restaurar registros no app.
+- Meu espaço: registro rápido, novo RPD, rascunhos e resumo da semana.
+- Meus registros: busca, filtros, edição e PDF dos registros selecionados.
+- Favoritos: respostas alternativas e mensagens escritas pelo próprio usuário.
+- Ajustes: papel claro, noite acolhedora ou tema do celular; três tamanhos de letra; animações; bloqueio; backup e restauração.
 
-## Gerar pelo GitHub Actions
+O resumo semanal organiza somente os registros selecionados. Mostra datas, emoções informadas e palavras repetidas, sem inferir diagnósticos. Seu texto é editável e deve ser revisado antes da exportação. Nenhum PDF é enviado automaticamente.
 
-1. O workflow é executado em pull requests para main. Também pode ser iniciado manualmente quando estiver na branch padrão.
-2. Abra Actions > Gerar APK do Aconchego e selecione uma execução concluída com sucesso.
-3. Baixe o artefato Aconchego-APK, extraia o ZIP e abra app-debug.apk no Android.
+## Dados
 
-O workflow usa JDK 17, Gradle 8.9, Android Gradle Plugin 8.7.3 e SDK 35. O APK de teste é assinado com chave de depuração; não é uma distribuição da Play Store. A chave é mantida no cache do repositório quando disponível. Se o cache se perder, a assinatura pode mudar e impedir atualizar uma instalação anterior. Antes de uma distribuição permanente, configure uma chave de assinatura durável e privada.
+O backup JSON inclui registros, rascunhos, favoritos e preferências. Ao restaurar, novos itens são acrescentados e os itens já existentes no celular são mantidos. O bloqueio não é alterado pela restauração. O arquivo de backup não possui senha e deve ser guardado em local privado. O PDF é para leitura e não restaura os dados no app.
 
-## Gerar localmente
+O bloqueio utiliza a biometria ou credencial do próprio Android. É necessário configurar a proteção de tela no aparelho. Enquanto bloqueado, o app oculta a interface e rejeita o acesso aos registros pela ponte JavaScript.
 
-Instale JDK 17, Gradle 8.9 e Android SDK (platforms;android-35, build-tools;35.0.0). Configure ANDROID_HOME e execute na raiz:
+## Desenvolvimento
 
-    gradle --no-daemon assembleDebug lintDebug
+JDK 17, Gradle 8.9, SDK Android 35. `gradle assembleRelease lintDebug` produz um APK release sem assinatura. `web-source` contém a interface React; execute `npm run build` nessa pasta após editar. Os recursos web são incluídos para funcionamento sem internet.
 
-Saída esperada:
+O workflow compila e testa no emulador Android 15. Seu artefato contém o APK release sem assinatura e o apksigner. O APK precisa ser assinado localmente com a chave privada antes da distribuição. A chave e sua senha não estão neste repositório.
 
-    app/build/outputs/apk/debug/app-debug.apk
-
-Não é necessário Node para compilar o APK: os recursos web já estão incluídos em app/src/main/assets/web. Para alterar a interface, o código está em web-source. Com Node 22 ou superior, instale as dependências ali e execute npm run build.
-
-## Validação em aparelho ainda necessária
-
-- Instalação e abertura no Android 13 ou superior.
-- Criar, editar, concluir, reiniciar o aplicativo e confirmar persistência.
-- PDF curto/longo, destino local e cancelamento da exportação.
-- Botão Voltar, teclado, rotação e barras do sistema.
-- Alterações não salvas e falhas de armazenamento.
-
-Nenhum registro pessoal real foi incluído no projeto.
+A autenticação com um sensor biométrico real ainda exige verificação em aparelho físico.
